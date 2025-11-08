@@ -24,14 +24,14 @@ try {
 
 module.exports = {
   siteMetadata: {
-    title: 'GCN',
+    title: 'Cyber Data Guard',
     description:
-      'A starter template to build amazing static websites with Gatsby, Contentful and Netlify',
+      'Cyber Data Guard solutions',
     siteUrl: 'https://gcn.netlify.app',
     image: '/images/share.jpg',
     menuLinks: [
-      { name: 'Home', slug: '/' },
-      { name: 'About', slug: '/about/' },
+      { name: 'Home', slug: '/https://cyberdataguard.com/' },
+      { name: 'About', slug: '/Cyber Data Guard/' },
       { name: 'Contact', slug: '/contact/' },
     ],
     postsPerFirstPage: 7,

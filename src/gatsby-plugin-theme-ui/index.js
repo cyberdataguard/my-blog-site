@@ -1,11 +1,12 @@
 export default {
   colors: {
-    background: '#ffffff',
-    text: '#121212',
-    primary: '#121212',
-    secondary: '#e9e9e9',
-    tertiary: '#f3f3f3',
-    highlight: '#5b8bf7',
+    background: '#0A192FF',
+    text: '#D1D5DB',
+    link: '#64FFDA',
+    primary: '#000000ff',
+    secondary: '#64FFDA',
+    tertiary: '#F3F3F3',
+    highlight: '#3B82F6',
   },
   fonts: {
     body:

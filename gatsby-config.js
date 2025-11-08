@@ -7,9 +7,16 @@ try {
       spaceId: process.env.SPACE_ID,
       accessToken: process.env.ACCESS_TOKEN,
     },
+    development: {
+      spaceId: process.env.SPACE_ID,
+      accessToken: process.env.ACCESS_TOKEN,
+    },
   }
 } finally {
-  const { spaceId, accessToken } = contentfulConfig.production
+  const { spaceId, accessToken } =
+    process.env.NODE_ENV === 'development'
+      ? contentfulConfig.development
+      : contentfulConfig.production
   if (!spaceId || !accessToken) {
     throw new Error('Contentful space ID and access token need to be provided.')
   }
@@ -23,18 +30,9 @@ module.exports = {
     siteUrl: 'https://gcn.netlify.app',
     image: '/images/share.jpg',
     menuLinks: [
-      {
-        name: 'Home',
-        slug: '/',
-      },
-      {
-        name: 'About',
-        slug: '/about/',
-      },
-      {
-        name: 'Contact',
-        slug: '/contact/',
-      },
+      { name: 'Home', slug: '/' },
+      { name: 'About', slug: '/about/' },
+      { name: 'Contact', slug: '/contact/' },
     ],
     postsPerFirstPage: 7,
     postsPerPage: 6,
@@ -50,9 +48,7 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          {
-            resolve: 'gatsby-remark-prismjs',
-          },
+          { resolve: 'gatsby-remark-prismjs' },
           'gatsby-remark-autolink-headers',
           {
             resolve: 'gatsby-remark-images-contentful',
@@ -72,6 +68,7 @@ module.exports = {
         process.env.NODE_ENV === 'development'
           ? contentfulConfig.development
           : contentfulConfig.production,
+      typePrefix: 'Contentful_',
     },
     {
       resolve: 'gatsby-plugin-google-analytics',
@@ -95,12 +92,11 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     {
-      resolve: `gatsby-plugin-schema-snapshot`,
+      resolve: 'gatsby-plugin-schema-snapshot',
       options: {
-        path: `./src/gatsby/schema/schema.gql`,
+        path: './src/gatsby/schema/schema.gql',
         update: process.env.GATSBY_UPDATE_SCHEMA_SNAPSHOT,
       },
     },
-    'gatsby-plugin-netlify',
   ],
 }

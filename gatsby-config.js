@@ -100,3 +100,11 @@ module.exports = {
     },
   ],
 }
+// gatsby-config.js
+module.exports = {
+  // ...other config
+  plugins: [
+    // other plugins...
+    `gatsby-plugin-netlify`, // ⬅️ این خط را اضافه کنید
+  ],
+}
